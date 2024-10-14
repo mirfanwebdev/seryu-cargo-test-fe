@@ -1,10 +1,14 @@
-import { useState } from "react";
-import "./App.css";
+// import Card from "./components/Card";
+import ContainerSection from "./components/ContainerSection";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
-      <div>test</div>
+      <div className="bg-black text-white min-h-screen">
+        <Header />
+        <ContainerSection />
+      </div>
     </>
   );
 }
