@@ -1,29 +1,9 @@
-import Card from "./Card";
-export function CardList() {
-  return (
-    <div className="flex flex-wrap gap-7 justify-between">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </div>
-  );
+export function CardList({ children }) {
+  return <div className="flex flex-wrap gap-7 justify-between">{children}</div>;
 }
 
-export function CardListScrollable() {
+export function CardListScrollable({ children }) {
   return (
-    <div className="flex gap-7 overflow-x-auto scroll-smooth">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </div>
+    <div className="flex gap-7 overflow-x-auto scroll-smooth">{children}</div>
   );
 }
