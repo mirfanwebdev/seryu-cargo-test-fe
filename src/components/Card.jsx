@@ -1,7 +1,7 @@
 function Card() {
   return (
     <>
-      <div className="max-w-[188px] max-h-[355px] bg-[#050E12] rounded-md">
+      <div className="w-[188px] h-[355px] bg-[#050E12] rounded-md flex-none">
         <img
           className="object-cover rounded-md"
           src="https://placehold.co/193x290"
