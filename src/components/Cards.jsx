@@ -1,6 +1,7 @@
+import { ButtonFavorite, ButtonWatchlist } from "./Buttons";
 import ContainerButton from "./ContainerButton";
 
-function Card() {
+function BaseCard({ children }) {
   return (
     <>
       <div className="w-[188px] h-[355px] bg-[#050E12] rounded-md flex-none relative">
@@ -11,7 +12,7 @@ function Card() {
             alt="placeholder-image"
           />
           <div className="hidden group-hover:flex gap-2.5 absolute bottom-2.5 right-2.5">
-            <ContainerButton />
+            {children}
           </div>
         </div>
         <div className="pt-3 pl-4">
@@ -25,4 +26,32 @@ function Card() {
   );
 }
 
-export default Card;
+export function Card() {
+  return (
+    <>
+      <BaseCard>
+        <ContainerButton />
+      </BaseCard>
+    </>
+  );
+}
+
+export function CardFavorite() {
+  return (
+    <>
+      <BaseCard>
+        <ButtonFavorite />
+      </BaseCard>
+    </>
+  );
+}
+
+export function CardWatchlist() {
+  return (
+    <>
+      <BaseCard>
+        <ButtonWatchlist />
+      </BaseCard>
+    </>
+  );
+}
