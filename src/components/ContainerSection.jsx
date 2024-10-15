@@ -1,4 +1,4 @@
-import CardList from "./CardList";
+import { CardList } from "./CardList";
 
 function ContainerSection({ title }) {
   return (

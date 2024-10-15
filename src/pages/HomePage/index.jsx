@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import ContainerSection from "../../components/ContainerSection";
-import Card from "../../components/Card";
+import { CardListScrollable } from "../../components/CardList";
 
 function NowPlaying() {
   return (
@@ -9,16 +9,7 @@ function NowPlaying() {
         <h1 className="font-semibold font-poppins text-5xl leading-[72px] capitalize pb-2">
           now playing
         </h1>
-        <div className="flex gap-7 overflow-x-auto scroll-smooth">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <CardListScrollable />
       </div>
     </>
   );
