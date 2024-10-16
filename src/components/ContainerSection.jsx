@@ -1,5 +1,3 @@
-import { CardList } from "./CardList";
-
 function ContainerSection({ title, children }) {
   return (
     <>
