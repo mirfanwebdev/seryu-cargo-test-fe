@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { ButtonFavorite, ButtonWatchlist } from "./Buttons";
 import ContainerButton from "./ContainerButton";
+import { displayYear } from "../utils";
+const baseImgURL = import.meta.env.VITE_TMDB_IMAGE_URL;
 
 function BaseCard({ children, id, img, titleMovie, year }) {
-  const posterUrl = `https://image.tmdb.org/t/p/w500${img}`;
-  const displayYear = (releaseDate) => new Date(releaseDate).getFullYear();
+  const posterUrl = `${baseImgURL}${img}`;
 
   return (
     <>
