@@ -29,6 +29,7 @@ function HomePage() {
           {topRated.map((movie) => (
             <Card
               key={movie.id}
+              id={movie.id}
               img={movie.poster_path}
               titleMovie={movie.title}
               year={movie.release_date}

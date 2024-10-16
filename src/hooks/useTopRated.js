@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
+import { getTopRated } from "../api";
 const useTopRated = () => {
   const [topRated, setTopRated] = useState([]);
-  const API_KEY = "c4326c9636ed552b98cf0239802c50bb";
 
-  const fetchTopRated = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const data = await response.json();
-      const results = data.results.slice(0, 12);
-      setTopRated(results);
-    } catch (error) {
-      console.log(error);
-    }
+  // const apiKey = import.meta.env.VITE_API_KEY;
+  // const apiUrl = import.meta.env.VITE_API_URL_V3;
+
+  // const fetchTopRated = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${apiUrl}/top_rated?api_key=${apiKey}&language=en-US&page=1`
+  //     );
+  //     const data = await response.json();
+  //     const results = data.results.slice(0, 12);
+  //     setTopRated(results);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const handleTopRated = async () => {
+    const data = await getTopRated();
+    const movies = data.results.slice(0, 12);
+    setTopRated(movies);
   };
 
   useEffect(() => {
-    fetchTopRated();
+    handleTopRated();
   }, []);
   return { topRated };
 };
