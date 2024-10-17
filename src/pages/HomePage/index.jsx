@@ -4,6 +4,7 @@ import { CardList, CardListScrollable } from "../../components/CardList";
 import { Card } from "../../components/Cards";
 import useNowPlaying from "../../hooks/useNowPlaying";
 import useTopRated from "../../hooks/useTopRated";
+import { Outlet } from "react-router-dom";
 
 function HomePage() {
   const { nowPlaying } = useNowPlaying();
@@ -17,6 +18,7 @@ function HomePage() {
           {nowPlaying.map((movie) => (
             <Card
               key={movie.id}
+              id={movie.id}
               img={movie.poster_path}
               titleMovie={movie.title}
               year={movie.release_date}
@@ -37,6 +39,7 @@ function HomePage() {
           ))}
         </CardList>
       </ContainerSection>
+      <Outlet />
     </>
   );
 }

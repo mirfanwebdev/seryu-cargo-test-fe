@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getRecommendation } from "../api";
+import { getRecommendation } from "../api/movie";
 const useRecommend = (id) => {
   const [recommended, setRecommended] = useState([]);
 

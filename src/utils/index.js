@@ -20,3 +20,10 @@ export const formatedDate = (date) => {
   }
   return date;
 };
+
+export const ratingNumber = (rating) => {
+  if (rating) {
+    return Math.floor(rating * 10);
+  }
+  return rating;
+};

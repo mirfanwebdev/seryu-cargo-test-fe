@@ -1,20 +1,51 @@
-import { MdBookmarkBorder, MdFavoriteBorder } from "react-icons/md";
+import {
+  MdBookmark,
+  MdBookmarkBorder,
+  MdFavorite,
+  MdFavoriteBorder,
+} from "react-icons/md";
+import useFavorite from "../hooks/useFavorite";
+import useWatchList from "../hooks/useWatchlist";
 
-export function ButtonFavorite() {
+export function ButtonFavorite({ id, img, titleMovie, year, active = false }) {
+  const { favorite, handleFavorite } = useFavorite({
+    id,
+    img,
+    titleMovie,
+    year,
+    active,
+  });
+
   return (
     <>
-      <button className="hover:scale-110">
-        <MdFavoriteBorder className="text-2xl" />
+      <button onClick={handleFavorite} className="hover:scale-110">
+        {favorite ? (
+          <MdFavorite className="text-2xl" />
+        ) : (
+          <MdFavoriteBorder className="text-2xl" />
+        )}
       </button>
     </>
   );
 }
 
-export function ButtonWatchlist() {
+export function ButtonWatchlist({ id, img, titleMovie, year, active = false }) {
+  const { watchList, handleWatchList } = useWatchList({
+    id,
+    img,
+    titleMovie,
+    year,
+    active,
+  });
+
   return (
     <>
-      <button className="hover:scale-110">
-        <MdBookmarkBorder className="text-2xl" />
+      <button onClick={handleWatchList} className="hover:scale-110">
+        {watchList ? (
+          <MdBookmark className="text-2xl" />
+        ) : (
+          <MdBookmarkBorder className="text-2xl" />
+        )}
       </button>
     </>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTopRated } from "../api";
+import { getTopRated } from "../api/movie";
 const useTopRated = () => {
   const [topRated, setTopRated] = useState([]);
 

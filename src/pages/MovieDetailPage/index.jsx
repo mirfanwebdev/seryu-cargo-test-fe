@@ -1,6 +1,5 @@
 import { CardListScrollable } from "../../components/CardList";
 import { Card } from "../../components/Cards";
-import ContainerButton from "../../components/ContainerButton";
 import ContainerSection from "../../components/ContainerSection";
 import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
@@ -10,8 +9,11 @@ import {
   displayYear,
   displayGenres,
   formatedDate,
+  ratingNumber,
 } from "../../utils";
 import useRecommend from "../../hooks/useRecommend";
+import CircularRating from "../../components/CircularRating";
+import { ButtonFavorite, ButtonWatchlist } from "../../components/Buttons";
 
 const baseImgURL = import.meta.env.VITE_TMDB_IMAGE_URL;
 const baseBackdropURL = import.meta.env.VITE_TMDB_IMAGE_URL_ORIGINAL;
@@ -23,37 +25,55 @@ function DetailSecton({ movie }) {
   return (
     <>
       <div
-        className="h-[400px] w-full py-[50px] px-[120px] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${backdropUrl})` }}
+        className="flex gap-5 justify-center flex-wrap md:flex-nowrap min-h-[400px] w-full p-4 md:py-[50px] md:px-[120px] bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${backdropUrl})`,
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          backgroundBlendMode: "overlay",
+        }}
       >
-        <div className="flex gap-5">
-          <div className="w-[200px] h-[300px] flex-none">
-            <img src={posterUrl} alt={movie.title} className="object-cover" />
+        <div className="w-[200px] h-[300px] flex-none">
+          <img src={posterUrl} alt={movie.title} className="object-cover" />
+        </div>
+        <div className="flex flex-col font-roboto text-sm md:pt-[25px]">
+          <h1 className="font-poppins font-bold text-4xl text-balance">
+            {movie.title}
+            <span className="font-normal">{` (${displayYear(
+              movie.release_date
+            )})`}</span>
+          </h1>
+          <div className="pt-2 inline-block">
+            <span>{formatedDate(movie.release_date)}</span>
+            <span className="before:content-['·'] before:px-1">
+              {displayGenres(movie.genres)}
+            </span>
+            <span className="before:content-['·'] before:px-1">
+              {displayRuntime(movie.runtime)}
+            </span>
           </div>
-          <div className="font-roboto text-sm pt-[25px]">
-            <h1 className="font-poppins font-bold text-[32px]">
-              {movie.title}
-              <span className="font-normal">{` (${displayYear(
-                movie.release_date
-              )})`}</span>
-            </h1>
-            <div className="pt-2 inline-block">
-              <span>{formatedDate(movie.release_date)}</span>
-              <span className="before:content-['·'] before:px-1">
-                {displayGenres(movie.genres)}
-              </span>
-              <span className="before:content-['·'] before:px-1">
-                {displayRuntime(movie.runtime)}
-              </span>
-            </div>
-            <div className="flex gap-2 py-[25px]">
-              <ContainerButton />
-            </div>
-            <p>{movie.tagline}</p>
-            <div className="pt-2.5">
-              <p className="font-bold pb-[5px]">Overview</p>
-              <p>{movie.overview}</p>
-            </div>
+          <div className="flex items-center gap-4 py-[25px]">
+            <CircularRating
+              value={movie.vote_average * 10}
+              text={ratingNumber(movie.vote_average)}
+            />
+            <p className="w-5 text-wrap text-xs">User Score</p>
+            <ButtonWatchlist
+              id={movie.id}
+              img={movie.poster_path}
+              titleMovie={movie.title}
+              year={movie.release_date}
+            />
+            <ButtonFavorite
+              id={movie.id}
+              img={movie.poster_path}
+              titleMovie={movie.title}
+              year={movie.release_date}
+            />
+          </div>
+          <p>{movie.tagline}</p>
+          <div className="pt-2.5">
+            <p className="font-bold pb-[5px]">Overview</p>
+            <p>{movie.overview}</p>
           </div>
         </div>
       </div>
@@ -68,7 +88,6 @@ function MovieDetailPage() {
   return (
     <>
       <Header />
-      {/* <div>{detail.title}</div> */}
       <DetailSecton movie={detail} />
       <ContainerSection title={"recommended"} large={false}>
         <CardListScrollable>

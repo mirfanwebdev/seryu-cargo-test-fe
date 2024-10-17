@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDetail } from "../api";
+import { getDetail } from "../api/movie";
 
 const useDetail = (id) => {
   const [detail, setDetail] = useState({});
