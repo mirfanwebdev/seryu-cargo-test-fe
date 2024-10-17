@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { ButtonFavorite, ButtonWatchlist } from "./Buttons";
-import ContainerButton from "./ContainerButton";
+import { displayYear } from "../utils";
+const baseImgURL = import.meta.env.VITE_TMDB_IMAGE_URL;
 
 function BaseCard({ children, id, img, titleMovie, year }) {
-  const posterUrl = `https://image.tmdb.org/t/p/w500${img}`;
-  const displayYear = (releaseDate) => new Date(releaseDate).getFullYear();
+  const posterUrl = `${baseImgURL}${img}`;
 
   return (
     <>
@@ -15,7 +15,7 @@ function BaseCard({ children, id, img, titleMovie, year }) {
             src={posterUrl}
             alt={titleMovie}
           />
-          <div className="hidden group-hover:flex gap-2.5 absolute bottom-2.5 right-2.5">
+          <div className="hidden group-hover:flex gap-2.5 absolute bottom-2.5 right-2.5 z-10">
             {children}
           </div>
         </Link>
@@ -36,7 +36,13 @@ export function Card({ id, img, titleMovie, year }) {
   return (
     <>
       <BaseCard id={id} img={img} titleMovie={titleMovie} year={year}>
-        <ContainerButton />
+        <ButtonWatchlist
+          id={id}
+          img={img}
+          titleMovie={titleMovie}
+          year={year}
+        />
+        <ButtonFavorite id={id} img={img} titleMovie={titleMovie} year={year} />
       </BaseCard>
     </>
   );
@@ -46,7 +52,13 @@ export function CardFavorite({ id, img, titleMovie, year }) {
   return (
     <>
       <BaseCard id={id} img={img} titleMovie={titleMovie} year={year}>
-        <ButtonFavorite />
+        <ButtonFavorite
+          id={id}
+          img={img}
+          titleMovie={titleMovie}
+          year={year}
+          active={true}
+        />
       </BaseCard>
     </>
   );
@@ -56,7 +68,13 @@ export function CardWatchlist({ id, img, titleMovie, year }) {
   return (
     <>
       <BaseCard id={id} img={img} titleMovie={titleMovie} year={year}>
-        <ButtonWatchlist />
+        <ButtonWatchlist
+          id={id}
+          img={img}
+          titleMovie={titleMovie}
+          year={year}
+          active={true}
+        />
       </BaseCard>
     </>
   );
