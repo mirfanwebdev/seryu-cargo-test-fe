@@ -1,8 +1,43 @@
-# React + Vite
+# Movie Web App - Seryu Cargo Coding Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React web application that allow to explore information about movie from TMDB.
 
-Currently, two official plugins are available:
+## Feature
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse now playing, and top rated movies.
+- View detailed information about a movie.
+- Save your favorite and watchlist movies.
+
+## Screenshot
+
+![screenshot](./public/screenshot-tmdb.png)
+
+## TechStack
+
+- React
+- TMDB API
+- Vite
+- React Router
+- React icons
+- TailwindCSS
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/mirfanwebdev/mirfan-page.git
+cd seryu-cargo-test
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
+
+```bash
+npm run dev
+```

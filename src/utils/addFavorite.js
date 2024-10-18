@@ -1,6 +1,8 @@
+import { getFavoriteMovies } from "./getLocalStorage";
+
 const addFavorite = ({ id, titleMovie, img, year }) => {
-  const savedFavorites = localStorage.getItem("favoriteMovies");
-  const favoriteMovies = JSON.parse(savedFavorites);
+  const favoriteMovies = getFavoriteMovies();
+
   const addMovie = {
     id: id,
     title: titleMovie,
@@ -8,12 +10,7 @@ const addFavorite = ({ id, titleMovie, img, year }) => {
     release_date: year,
   };
 
-  if (!savedFavorites) {
-    let movie = [];
-    movie.push(addMovie);
-    localStorage.setItem("favoriteMovies", JSON.stringify(movie));
-  }
-  if (favoriteMovies.some((movie) => movie.id)) {
+  if (favoriteMovies.some((movie) => movie.id === id)) {
     return;
   }
 

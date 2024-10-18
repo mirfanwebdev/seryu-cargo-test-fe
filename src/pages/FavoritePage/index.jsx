@@ -3,15 +3,14 @@ import { CardList } from "../../components/CardList";
 import Header from "../../components/Header";
 import { CardFavorite } from "../../components/Cards";
 import { useEffect, useState } from "react";
+import { getFavoriteMovies } from "../../utils/getLocalStorage";
 
 function FavoritePage() {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
-    const savedFavorite = localStorage.getItem("favoriteMovies");
-    if (savedFavorite) {
-      setFavoriteMovies(JSON.parse(savedFavorite));
-    }
+    const savedFavorite = getFavoriteMovies();
+    setFavoriteMovies(savedFavorite);
   }, []);
 
   return (

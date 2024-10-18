@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken } from "../api/auth";
-
+import { getRequestToken } from "../utils/getLocalStorage";
+// import { handleToken } from "../utils/handleToken";
 function AuthCallback() {
   const navigate = useNavigate();
 
@@ -18,15 +19,16 @@ function AuthCallback() {
   };
 
   useEffect(() => {
-    const requestToken = localStorage.getItem("request_token");
-
+    const requestToken = getRequestToken();
     if (requestToken) {
       handleToken(requestToken);
     }
   }, []);
   return (
     <>
-      <h1>redirecting...</h1>
+      <div className="flex items-center justify-center">
+        <h1 className="text-xl font-semibold">redirecting...</h1>
+      </div>
     </>
   );
 }

@@ -1,7 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { getToken } from "../utils/getLocalStorage";
 
 function ProtectedRoute({ children }) {
-  if (!localStorage.getItem("access_token")) {
+  const accessToken = getToken();
+  if (!accessToken) {
     return <Navigate to="/login" replace />;
   }
   return children || <Outlet />;

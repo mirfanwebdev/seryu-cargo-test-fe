@@ -3,15 +3,14 @@ import { CardList } from "../../components/CardList";
 import { CardWatchlist } from "../../components/Cards";
 import ContainerSection from "../../components/ContainerSection";
 import Header from "../../components/Header";
+import { getWatchlistMovies } from "../../utils/getLocalStorage";
 
 function WatchlistPage() {
   const [watchListMovies, setWatchListMovies] = useState([]);
 
   useEffect(() => {
-    const savedWatchlist = localStorage.getItem("watchlistMovies");
-    if (savedWatchlist) {
-      setWatchListMovies(JSON.parse(savedWatchlist));
-    }
+    const savedWatchList = getWatchlistMovies();
+    setWatchListMovies(savedWatchList);
   }, []);
 
   return (

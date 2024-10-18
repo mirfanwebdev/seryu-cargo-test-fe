@@ -22,10 +22,6 @@ const routes = createBrowserRouter([
     path: "/movie/:id",
     element: <MovieDetailPage />,
   },
-  // {
-  //   path: "/login",
-  //   element: <Login />,
-  // },
   {
     path: "/auth/callback",
     element: <AuthCallback />,

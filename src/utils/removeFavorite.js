@@ -1,6 +1,7 @@
+import { getFavoriteMovies } from "./getLocalStorage";
+
 const removeFavorite = (id) => {
-  const savedFavorites = localStorage.getItem("favoriteMovies");
-  const favoriteMovies = JSON.parse(savedFavorites);
+  const favoriteMovies = getFavoriteMovies();
 
   const indexRemove = favoriteMovies.findIndex((movie) => movie.id === id);
   if (indexRemove !== -1) {
