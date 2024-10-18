@@ -1,6 +1,7 @@
+import { getWatchlistMovies } from "./getLocalStorage";
+
 const removeWatchList = (id) => {
-  const savedWatchlist = localStorage.getItem("watchlistMovies");
-  const watchlistMovies = JSON.parse(savedWatchlist);
+  const watchlistMovies = getWatchlistMovies();
 
   const indexRemove = watchlistMovies.findIndex((movie) => movie.id === id);
   if (indexRemove !== -1) {

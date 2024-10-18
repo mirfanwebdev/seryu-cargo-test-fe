@@ -1,9 +1,10 @@
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../utils/getLocalStorage";
 
 function Logout() {
   const navigate = useNavigate();
-  const token = localStorage.getItem("access_token");
+  const token = getToken();
   const handleLogout = () => {
     localStorage.removeItem("access_token");
     navigate("/");

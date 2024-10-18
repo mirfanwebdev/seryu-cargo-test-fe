@@ -1,6 +1,7 @@
+import { getWatchlistMovies } from "./getLocalStorage";
+
 const addWatchlist = ({ id, titleMovie, img, year }) => {
-  const savedWatchlist = localStorage.getItem("watchlistMovies");
-  const watchlistMovies = JSON.parse(savedWatchlist);
+  const watchlistMovies = getWatchlistMovies();
 
   const addMovie = {
     id: id,
@@ -9,11 +10,6 @@ const addWatchlist = ({ id, titleMovie, img, year }) => {
     release_date: year,
   };
 
-  if (!savedWatchlist) {
-    let movie = [];
-    movie.push(addMovie);
-    localStorage.setItem("watchlistMovies", JSON.stringify(movie));
-  }
   if (watchlistMovies.some((movie) => movie.id === id)) {
     return;
   }
