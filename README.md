@@ -1,4 +1,4 @@
-# Movie Web App - Seryu Cargo Coding Test
+# Movie Web App
 
 React web application that allow to explore information about movie from TMDB.
 
